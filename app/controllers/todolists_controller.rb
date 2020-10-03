@@ -12,12 +12,19 @@ class TodolistsController < ApplicationController
       flash.now[:alert] = 'error'
       render :index
     end
-    # 詳細画面へリダイレクト
-    # redirect_to todolist_path(book.id)
   end
 
   def index
     @books = Book.all
+    # indexに新規投稿機能をつけるため追記
+    @book = Book.new
+    # if book.save
+    #   flash[:notice] = 'Book was successfully created.'
+    #   redirect_to todolist_path(book.id)
+    # else
+    #   flash.now[:alert] = 'error'
+    #   render :index
+    # end
   end
 
   def show

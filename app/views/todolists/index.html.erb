@@ -1,27 +1,36 @@
 <h1>Books</h1>
-<table border="1">
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-  </tr>
-  <% @books.each do |book| %>
+<table>
+  <thead>
     <tr>
-      <td>
-        <%= link_to book.title, todolist_path(book.id) %>
-      </td>
-      <td>
-        <%= link_to book.body, todolist_path(book.id) %>
-      </td> 
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="3"></th>
     </tr>
-    <%
-=begin%>
- <%= link_to "詳細", todolist_path(@book.id) %>
-    <%= link_to "編集", edit_todolist_path(@book.id) %>
-    <%= link_to "削除", destroy_todolist_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>  
-<%
-=end%>
-    <br>
-  <% end %>
+  </thead>
+  <tbody>
+
+  </tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td>
+          <%= link_to book.title, todolist_path(book.id) %>
+        </td>
+        <td>
+          <%= link_to book.body, todolist_path(book.id) %>
+        </td> 
+        <td>
+          <%= link_to "Show", todolist_path(book.id) %>
+        </td>
+        <td>
+          <%= link_to "Edit", edit_todolist_path(book.id) %>
+        </td>
+        <td>
+          <%= link_to "Destroy", destroy_todolist_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        </td>
+      </tr>
+      <br>
+    <% end %>
+  </tbody>
 </table>
 
 <br>
@@ -31,5 +40,6 @@
   <%= f.text_field :title %>
   <h4>Body</h4>
   <%= f.text_area :body %>
+  <br>
   <%= f.submit 'Create Book' %>
 <% end %>

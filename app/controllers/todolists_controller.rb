@@ -7,10 +7,10 @@ class TodolistsController < ApplicationController
     @book = Book.new(book_params)
     if @book.save
       flash[:notice] = 'Book was successfully created.'
-      redirect_to todolist_path(book.id)
+      redirect_to todolist_path(@book.id)
     else
+      # renderするときはflash.now
       flash.now[:alert] = 'error'
-      # flash[:notice] = 'error'
       render :new
     end
   end

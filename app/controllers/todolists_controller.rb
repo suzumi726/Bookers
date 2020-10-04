@@ -4,27 +4,22 @@ class TodolistsController < ApplicationController
   end
 
   def create
-    book = Book.new(book_params)
-    if book.save
+    @book = Book.new(book_params)
+    if @book.save
       flash[:notice] = 'Book was successfully created.'
       redirect_to todolist_path(book.id)
     else
       flash.now[:alert] = 'error'
-      render :index
+      # flash[:notice] = 'error'
+      render :new
     end
   end
 
   def index
     @books = Book.all
+    # binding.pry
     # indexに新規投稿機能をつけるため追記
     @book = Book.new
-    # if book.save
-    #   flash[:notice] = 'Book was successfully created.'
-    #   redirect_to todolist_path(book.id)
-    # else
-    #   flash.now[:alert] = 'error'
-    #   render :index
-    # end
   end
 
   def show

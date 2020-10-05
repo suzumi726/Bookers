@@ -12,10 +12,20 @@
     <% @books.each do |book| %>
       <tr>
         <td>
-          <%= link_to book.title, book_path(book.id) %>
+          <%
+=begin%>
+ <%= link_to book.title, book_path(book.id) %> 
+<%
+=end%>
+          <%= book.title %>
         </td>
         <td>
-          <%= link_to book.body, book_path(book.id) %>
+          <%
+=begin%>
+ <%= link_to book.body, book_path(book.id) %> 
+<%
+=end%>
+          <%= book.body %>
         </td> 
         <td>
           <%= link_to "Show", book_path(book.id) %>
